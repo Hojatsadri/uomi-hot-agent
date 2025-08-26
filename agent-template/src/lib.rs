@@ -11,13 +11,13 @@ struct Message {
 
 #[no_mangle]
 pub extern "C" fn run() {
-        log("This is a log inside the WASM module!");
+        log("Hojjatsadri's agent has started!");
         //get the user input
         let input = utils::read_input();
         //you can parse the input if you expect to receive a json
         let messages = utils::parse_messages(&input);
         //create a system message
-        let system_message = utils::system_message("Your name is UOMI Agent".to_string());
+        let system_message = utils::system_message("Your name is Ding Dong Bot".to_string());
         //process the messages
         let modified_messages = utils::process_messages(system_message, messages);
 
@@ -25,7 +25,7 @@ pub extern "C" fn run() {
 
         let message_file = utils::get_cid_file_service(cid);
     
-        log(&format!("Message from a file on IPFS: {:?}", String::from_utf8(message_file).unwrap()));
+        log(&format!("Message comming a source from a file on IPFS: {:?}", String::from_utf8(message_file).unwrap()));
 
         let message_file_bytes = utils::get_input_file_service();
         log(&format!("Message from input file: {:?}", String::from_utf8(message_file_bytes).unwrap()));
